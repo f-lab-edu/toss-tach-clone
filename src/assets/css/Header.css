@@ -1,0 +1,70 @@
+.main-header {
+	height: 60px;
+	background-color: white;
+	border-bottom: 1px solid #e5e8ea;
+	position: sticky;
+	top: 0;
+	width: 100%;
+}
+
+.header-container {
+	width: 100%;
+	max-width: 1140px;
+	height: 100%;
+	margin: 0 auto;
+}
+
+.header-container-inner {
+	height: 100%;
+	width: 92%;
+	margin: 0 auto;
+	display: flex;
+	justify-content: space-between;
+}
+
+.logo-container {
+	height: 100%;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	margin-right: 24px;
+}
+
+.logo-container img {
+	height: 34px;
+}
+
+.right-container {
+	height: 100%;
+	display: flex;
+	align-items: center;
+}
+
+.p-navbar__menu {
+	display: flex;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.p-navbar__item {
+	margin-right: 20px;
+	height: 60px;
+	display: flex;
+	align-items: center;
+}
+
+.p-navbar__item > button {
+	background: white;
+	border: 0;
+	border-radius: 4px;
+	padding: 10px 20px;
+	cursor: pointer;
+}
+.p-navbar__item > .button-email {
+	color: #1b64da;
+	background-color: #e8f3ff;
+}
+.p-navbar__item > .button-career {
+	background-color: #f2f4f6;
+}
