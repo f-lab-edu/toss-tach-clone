@@ -3,10 +3,19 @@ export default {
 	env: {
 		node: true,
 	},
-	plugins: [],
-	extends: ['eslint:recommended', 'plugin:prettier/recommended', 'prettier'],
+	plugins: ['import'],
+	extends: ['eslint:recommended', 'plugin:prettier/recommended'],
 	parserOptions: {
 		parser: 'babel-eslint',
 	},
-	rules: {},
+	rules: {
+		'import/order': [
+			'error',
+			{
+				groups: ['builtin', 'external', 'internal', ['sibling', 'parent'], 'index', 'unknown'],
+				'newlines-between': 'always',
+				alphabetize: { order: 'asc', caseInsensitive: true },
+			},
+		],
+	},
 };

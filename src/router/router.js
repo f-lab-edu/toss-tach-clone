@@ -1,5 +1,5 @@
-import { routes } from './routeInfo';
-import NotFound from '../pages/Notfound';
+import { routes } from './routes';
+import NotFound from '@/pages/Notfound';
 
 function Router($container) {}
 

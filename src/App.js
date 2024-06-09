@@ -1,6 +1,7 @@
-import './assets/css/App.css';
-import Header from './components/Header.js';
-import { $ } from './utils/querySelector.js';
+import './assets/scss/App.scss';
+import Header from '@/components/Header.js';
+import Home from '@/pages/Home.js';
+import { $ } from '@/utils/querySelector.js';
 
 const App = ($element) => {
 	const start = () => {
@@ -12,6 +13,7 @@ const App = ($element) => {
 		`;
 
 		Header({ $element: $('.main-header') });
+		Home({ $element: $('#content') });
 	};
 
 	start();

@@ -1,3 +1,6 @@
+import '@/assets/scss/index.scss';
+import * as bootstrap from 'bootstrap';
+
 import App from './App.js';
 import { $ } from './utils/querySelector.js';
 

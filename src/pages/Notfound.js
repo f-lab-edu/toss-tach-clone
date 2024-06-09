@@ -1,4 +1,4 @@
-const NotFound = ({ $element }) => {
+const NotFoundPage = ({ $element }) => {
 	render = () => {
 		$element.innerHTML = `
       <main class="notFoundPage">
@@ -10,4 +10,4 @@ const NotFound = ({ $element }) => {
 	render();
 };
 
-export default NotFound;
+export default NotFoundPage;
