@@ -1,9 +1,15 @@
 import '@/assets/scss/Header.scss';
 import { $ } from '@/utils/querySelector';
 
-const Header = ({ $element }) => {
-	const render = () => {
-		$element.innerHTML = `
+
+class Header {
+	constructor($element){
+		this.$element = $element;
+		this.render();
+	}
+
+	render() {
+		this.$element.innerHTML = `
 		<header class="main-header">
 			<div class="header-container">
 				<div class="header-container-inner">
@@ -31,13 +37,6 @@ const Header = ({ $element }) => {
 		</header>
 	`;
 	};
-
-	const test = () => {
-		alert('하이');
-	};
-
-	render();
-	$('.button-career').addEventListener('click', test);
 };
 
 export default Header;
