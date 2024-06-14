@@ -1,25 +1,24 @@
 export default class StateComponent {
-  constructor(props = {}) {
-      this.props = props;
-      this.state = {};
-      this.init();
-  }
+	constructor(props = {}) {
+		this.props = props;
+		this.state = {};
 
-  init() {
-      this.state = this.initState();
-      this.render();
-  }
+		this.init();
+	}
 
-  initState() {
-      return {};
-  }
+	init() {
+		this.state = this.initState();
+		this.render();
+	}
 
-  setState(newState) {
-      this.state = { ...this.state, ...newState };
-      this.render();
-  }
+	initState() {
+		return {};
+	}
 
-  render() {}
+	setState(newState) {
+		this.state = { ...this.state, ...newState };
+		this.render();
+	}
+
+	render() {}
 }
-
-

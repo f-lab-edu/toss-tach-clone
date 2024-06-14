@@ -1,19 +1,17 @@
-import StateComponent from "@/components/StateComponent";
+// import StateComponent from '@/components/StateComponent';
 
-class NotFoundPage extends StateComponent {
-  constructor($element) {
-    this.element = $element;
-    this.render();
-  }
+class NotFoundPage {
+	constructor($element) {
+		this.$element = $element;
+	}
 
 	render() {
 		this.$element.innerHTML = `
-      <main class="notFoundPage">
-        404 NOT FOUND
-      </main>
+		<div class="container d-flex vw-100 h-100 mt-5">
+			<img class="img-fluid rounded " height="100%" alt="로고 아이콘" src="assets/images/not-found.jpg" />
+		</div>
     `;
-	};
-
-};
+	}
+}
 
 export default NotFoundPage;

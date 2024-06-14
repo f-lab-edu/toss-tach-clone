@@ -1,9 +1,7 @@
 import '@/assets/scss/Header.scss';
-import { $ } from '@/utils/querySelector';
-
 
 class Header {
-	constructor($element){
+	constructor($element) {
 		this.$element = $element;
 		this.render();
 	}
@@ -36,7 +34,7 @@ class Header {
 			</div>
 		</header>
 	`;
-	};
-};
+	}
+}
 
 export default Header;

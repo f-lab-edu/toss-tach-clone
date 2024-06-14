@@ -7,7 +7,8 @@
 	"scripts": {
 		"dev": "vite --host 0.0.0.0 --port 5555",
 		"build": "vite build",
-		"test": "jest"
+		"test": "jest",
+		"lint": "eslint --fix ."
 	},
 	"keywords": [],
 	"author": "",
@@ -21,6 +22,7 @@
 		"dayjs": "^1.11.11",
 		"eslint": "^8.45.0",
 		"eslint-config-prettier": "^9.1.0",
+		"eslint-plugin-html": "^8.1.1",
 		"eslint-plugin-import": "^2.29.1",
 		"eslint-plugin-prettier": "^5.1.3",
 		"jest": "^29.7.0",
