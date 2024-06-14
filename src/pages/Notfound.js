@@ -1,4 +1,6 @@
-class NotFoundPage {
+import StateComponent from "@/components/StateComponent";
+
+class NotFoundPage extends StateComponent {
   constructor($element) {
     this.element = $element;
     this.render();

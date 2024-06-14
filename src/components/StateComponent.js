@@ -1,4 +1,4 @@
-export default class StateExample {
+export default class StateComponent {
   constructor(props = {}) {
       this.props = props;
       this.state = {};
