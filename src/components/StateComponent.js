@@ -20,5 +20,7 @@ export default class StateComponent {
 		this.render();
 	}
 
-	render() {}
+	render() {
+		console.log('StateComponent render');
+	}
 }
