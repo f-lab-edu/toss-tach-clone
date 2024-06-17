@@ -34,7 +34,7 @@ class Home extends Component {
 			})
 			.join('');
 
-		this.$element.innerHTML = `
+		const html = `
 		<div class="container d-flex flex-column">
 			<img src="assets/images/toss-tech-banner.png" class="mt-5 rounded float-end" alt="toss-tech-banner">
 			<article class="list-item mt-5">
@@ -43,8 +43,9 @@ class Home extends Component {
 				</ul>
 			</article>
 		</div>`;
-
+		this.$element.innerHTML = html;
 		this.addEventListeners(this.$element);
+		return html;
 	}
 
 	addEventListeners($element) {
