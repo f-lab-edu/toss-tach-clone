@@ -1,10 +1,11 @@
+import Component from '@/core/Component.js';
 import ARTICLE_LIST from '@/mocks/article-list.json';
 import '@/assets/scss/Home.scss';
 import dayjs from '@/plugins/dayjs/index.js';
 
-class Home {
+class Home extends Component {
 	constructor($element) {
-		this.$element = $element;
+		super($element);
 	}
 
 	render() {
@@ -49,13 +50,15 @@ class Home {
 	addEventListeners($element) {
 		if (!$element) return;
 
-		$element.querySelector('.list-group').addEventListener('click', (e) => {
-			const listItem = e.target.closest('.list-group-item');
-			if (listItem) {
-				const articleId = listItem.getAttribute('id');
-				console.log('Clicked item:', articleId);
-			}
-		});
+		$element.querySelector('.list-group').addEventListener('click', this.handleClickEvent);
+	}
+
+	handleClickEvent(e) {
+		const listItem = e.target.closest('.list-group-item');
+		if (listItem) {
+			const articleId = listItem.getAttribute('id');
+			console.log('Clicked item:', articleId);
+		}
 	}
 }
 
