@@ -51,10 +51,10 @@ class Home extends Component {
 	addEventListeners($element) {
 		if (!$element) return;
 
-		$element.querySelector('.list-group').addEventListener('click', this.handleClickEvent);
+		$element.querySelector('.list-group').addEventListener('click', this.onArticleClick);
 	}
 
-	handleClickEvent(e) {
+	onArticleClick(e) {
 		const listItem = e.target.closest('.list-group-item');
 		if (listItem) {
 			const articleId = listItem.getAttribute('id');
