@@ -59,7 +59,8 @@ class Home extends Component {
 		const listItem = e.target.closest('.list-group-item');
 		if (listItem) {
 			const articleId = listItem.getAttribute('id');
-			router.navigateTo(`/articles/${articleId}`);
+			const queryParams = new URLSearchParams({ ref: 'homepage' }).toString();
+			router.navigateTo(`/articles/${articleId}?${queryParams}`);
 		}
 	}
 }
