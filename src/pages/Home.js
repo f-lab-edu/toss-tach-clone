@@ -1,7 +1,8 @@
+import '@/assets/scss/Home.scss';
 import Component from '@/core/Component.js';
 import ARTICLE_LIST from '@/mocks/article-list.json';
-import '@/assets/scss/Home.scss';
-import dayjs from '@/plugins/dayjs/index.js';
+import router from '@/router/router.js';
+import { formatDate } from '@/utils/dateFormat';
 
 class Home extends Component {
 	constructor($element) {
@@ -24,7 +25,7 @@ class Home extends Component {
 							<span>${article.summary}</span>
 						</div>
 						<div class="date">
-							<span>${dayjs(article.created_date).format('YYYY-MM-DD')}</span>
+							<span>${formatDate(article.created_date)}</span>
 						</div>
 					</div>
 					<div class="img-container">
@@ -36,7 +37,7 @@ class Home extends Component {
 
 		const html = `
 		<div class="container d-flex flex-column">
-			<img src="assets/images/toss-tech-banner.png" class="mt-5 rounded float-end" alt="toss-tech-banner">
+			<img src="/assets/images/toss-tech-banner.png" class="mt-5 rounded float-end" alt="toss-tech-banner">
 			<article class="list-item mt-5">
 				<ul class="list-group">
 					${listItems}
@@ -58,7 +59,7 @@ class Home extends Component {
 		const listItem = e.target.closest('.list-group-item');
 		if (listItem) {
 			const articleId = listItem.getAttribute('id');
-			console.log('Clicked item:', articleId);
+			router.navigateTo(`/articles/${articleId}`);
 		}
 	}
 }
