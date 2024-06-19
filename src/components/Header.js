@@ -7,7 +7,7 @@ class Header extends Component {
 	}
 
 	render() {
-		this.$element.innerHTML = `
+		const html = `
 		<header class="main-header">
 			<div class="header-container">
 				<div class="header-container-inner">
@@ -34,8 +34,9 @@ class Header extends Component {
 			</div>
 		</header>
 	`;
-
+		this.$element.innerHTML = html;
 		this.addEventListeners(this.$element);
+		return html;
 	}
 
 	addEventListeners($element) {
