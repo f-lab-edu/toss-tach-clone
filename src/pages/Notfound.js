@@ -8,7 +8,7 @@ class NotFoundPage {
 	render() {
 		this.$element.innerHTML = `
 		<div class="container d-flex vw-100 h-100 mt-5">
-			<img class="img-fluid rounded " height="100%" alt="로고 아이콘" src="assets/images/not-found.jpg" />
+			<img class="img-fluid rounded " height="100%" alt="404 Error" src="/assets/images/not-found.jpg" />
 		</div>
     `;
 	}

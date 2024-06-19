@@ -12,7 +12,7 @@ class Header {
 			<div class="header-container">
 				<div class="header-container-inner">
 					<div class="logo-container">
-						<img height="100%" alt="로고 아이콘" src="assets/images/logo-image.png" />
+						<img height="100%" alt="로고 아이콘" src="/assets/images/logo-image.png" />
 					</div>
 					<div class="right-container">
 						<ul class="p-navbar__menu">
