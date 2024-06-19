@@ -1,9 +1,9 @@
 import '@/assets/scss/Header.scss';
-
-class Header {
+import Component from '@/core/Component.js';
+import router from '@/router/router';
+class Header extends Component {
 	constructor($element) {
-		this.$element = $element;
-		this.render();
+		super($element);
 	}
 
 	render() {
@@ -34,6 +34,18 @@ class Header {
 			</div>
 		</header>
 	`;
+
+		this.addEventListeners(this.$element);
+	}
+
+	addEventListeners($element) {
+		if (!$element) return;
+
+		$element.querySelector('.logo-container').addEventListener('click', this.onLogoClick);
+	}
+
+	onLogoClick() {
+		router.navigateTo(`/`);
 	}
 }
 
