@@ -1,18 +1,18 @@
 import '@/assets/scss/Header.scss';
-
-class Header {
+import Component from '@/core/Component.js';
+import router from '@/router/router';
+class Header extends Component {
 	constructor($element) {
-		this.$element = $element;
-		this.render();
+		super($element);
 	}
 
 	render() {
-		this.$element.innerHTML = `
+		const html = `
 		<header class="main-header">
 			<div class="header-container">
 				<div class="header-container-inner">
 					<div class="logo-container">
-						<img height="100%" alt="로고 아이콘" src="assets/images/logo-image.png" />
+						<img height="100%" alt="로고 아이콘" src="/assets/images/logo-image.png" />
 					</div>
 					<div class="right-container">
 						<ul class="p-navbar__menu">
@@ -34,6 +34,19 @@ class Header {
 			</div>
 		</header>
 	`;
+		this.$element.innerHTML = html;
+		this.addEventListeners(this.$element);
+		return html;
+	}
+
+	addEventListeners($element) {
+		if (!$element) return;
+
+		$element.querySelector('.logo-container').addEventListener('click', this.onLogoClick);
+	}
+
+	onLogoClick() {
+		router.navigateTo(`/`);
 	}
 }
 
