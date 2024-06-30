@@ -25,4 +25,5 @@ module.exports = {
 			},
 		],
 	},
+	ignorePatterns: ['*.md'], // Markdown 파일을 무시하도록 추가
 };
