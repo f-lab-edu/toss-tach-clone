@@ -1,5 +1,3 @@
-// import { jest } from '@jest/globals';
-
 import ARTICLE from '@/mocks/article-body.json';
 import ARTICLE_LIST from '@/mocks/article-list.json';
 import Article from '@/pages/Article.js';
