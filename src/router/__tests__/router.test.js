@@ -3,6 +3,30 @@ import { jest } from '@jest/globals';
 import router from '@/router/router';
 import { $ } from '@/utils/querySelector.js';
 
+// 필요한 라우트를 설정합니다
+const testRoutes = [
+	{
+		path: '/',
+		name: 'home',
+		element: jest.fn(),
+	},
+	{
+		path: '/articles/:id',
+		name: 'article',
+		element: jest.fn(),
+	},
+	{
+		path: '/notfound',
+		name: 'notfound',
+		element: jest.fn(),
+	},
+];
+
+// 테스트 전에 라우트를 설정합니다
+beforeAll(() => {
+	router.routes = testRoutes;
+});
+
 describe('Router', () => {
 	let originalPushState;
 
