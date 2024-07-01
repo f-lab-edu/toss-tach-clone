@@ -1,4 +1,4 @@
-import Article from '@/pages/Article.js';
+import ArticlePage from '@/pages/ArticlePage.js';
 import Home from '@/pages/Home.js';
 import NotFound from '@/pages/Notfound';
 
@@ -12,7 +12,7 @@ export const routes = [
 	{
 		path: '/articles/:id',
 		name: 'article',
-		element: Article,
+		element: ArticlePage,
 		// page: ({ $target, param }) => new Article($target, param.id),
 	},
 	{

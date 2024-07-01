@@ -4,6 +4,7 @@ module.exports = {
 		node: true,
 		browser: true, // 브라우저 환경도 추가
 		es2021: true,
+		jest: true,
 	},
 	plugins: ['import', 'html'], // html 플러그인 추가
 	extends: ['eslint:recommended', 'plugin:prettier/recommended'],
@@ -20,8 +21,9 @@ module.exports = {
 			{
 				groups: ['builtin', 'external', 'internal', ['sibling', 'parent'], 'index', 'unknown'],
 				'newlines-between': 'always',
-				alphabetize: { order: 'asc', caseInsensitive: true },
+				// alphabetize: { order: 'asc', caseInsensitive: true },
 			},
 		],
 	},
+	ignorePatterns: ['*.md'], // Markdown 파일을 무시하도록 추가
 };

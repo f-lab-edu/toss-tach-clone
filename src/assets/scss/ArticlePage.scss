@@ -1,0 +1,39 @@
+article {
+	margin-top: 10%;
+
+	.content-inner {
+		width: 100%;
+		padding: 0 5%;
+		margin: 0 auto;
+	}
+
+	.header-title-container {
+		margin-top: 20px;
+	}
+
+	.header-title-container h1 {
+		font-size: 48px;
+		font-weight: 700;
+		line-height: 1.25;
+		word-break: keep-all;
+		overflow-wrap: break-word;
+	}
+
+	.header-created-date-container {
+		padding-top: 8px;
+		font-size: 24px;
+		margin-bottom: 20px;
+	}
+
+	.header-created-date-container span {
+		font-size: 24px;
+	}
+
+	.article-body {
+		color: #4e5968;
+		white-space: pre-wrap;
+		margin-top: 60px;
+		font-size: 20px;
+		line-height: 1.8;
+	}
+}
