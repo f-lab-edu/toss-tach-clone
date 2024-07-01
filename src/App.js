@@ -10,8 +10,6 @@ class App {
 	}
 
 	start() {
-		if (!this.$element) return;
-
 		this.$element.innerHTML = `
       <header class="main-header"></header>
       <section>

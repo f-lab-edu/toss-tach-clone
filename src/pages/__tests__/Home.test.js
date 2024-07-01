@@ -5,7 +5,6 @@ import router from '@/router/router';
 import Home from '@/pages/Home.js';
 import { $ } from '@/utils/querySelector.js';
 
-// Mock the navigateTo function before any tests are run
 beforeAll(() => {
 	router.navigateTo = jest.fn();
 });
@@ -18,7 +17,6 @@ describe('Home', () => {
 		document.body.innerHTML = '<div id="content"></div>';
 		const $element = $('#content');
 
-		// Save the original function and replace it with a mock
 		originalNavigateTo = router.navigateTo;
 		router.navigateTo = jest.fn();
 
@@ -27,7 +25,6 @@ describe('Home', () => {
 	});
 
 	afterEach(() => {
-		// Restore the original function
 		router.navigateTo = originalNavigateTo;
 	});
 

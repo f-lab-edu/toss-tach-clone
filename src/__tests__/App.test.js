@@ -19,8 +19,7 @@ describe('App', () => {
 
 	test('초기화 및 렌더링이 올바르게 이루어져야 합니다', () => {
 		const $element = $('#app');
-		const app = new App($element);
-		console.log(app);
+		new App($element);
 
 		expect($element.innerHTML).toContain('main-header');
 		expect($element.innerHTML).toContain('content');

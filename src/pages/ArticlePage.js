@@ -1,11 +1,11 @@
-import '@/assets/scss/Article.scss';
+import '@/assets/scss/ArticlePage.scss';
 
 import Component from '@/core/Component.js';
 import ARTICLE from '@/mocks/article-body.json';
 import ARTICLE_LIST from '@/mocks/article-list.json';
 import { formatDate } from '@/utils/dateFormat';
 
-class Article extends Component {
+class ArticlePage extends Component {
 	constructor($element, articleId, searchParams) {
 		super($element);
 		this.articleId = articleId;
@@ -40,4 +40,4 @@ class Article extends Component {
 	}
 }
 
-export default Article;
+export default ArticlePage;
