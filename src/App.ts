@@ -5,6 +5,7 @@ import { $ } from '@/utils/querySelector';
 
 class App {
 	$element: HTMLElement;
+	header: Header;
 
 	constructor($element: HTMLElement) {
 		this.$element = $element;
@@ -19,7 +20,7 @@ class App {
       </section>
     `;
 
-		new Header($('.main-header'));
+		this.header = new Header($('.main-header'));
 		router.route();
 
 		window.addEventListener('popstate', () => router.route());

@@ -1,5 +1,3 @@
-// import StateComponent from '@/components/StateComponent';
-
 import Component from '@/core/Component';
 
 class NotFoundPage extends Component {
@@ -13,6 +11,8 @@ class NotFoundPage extends Component {
 			<img class="img-fluid rounded " height="100%" alt="404 Error" src="/assets/images/not-found.jpg" />
 		</div>
     `;
+
+		return;
 	}
 }
 

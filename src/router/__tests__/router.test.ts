@@ -65,7 +65,8 @@ describe('Router', () => {
 		const queryParams: URLSearchParams = new URLSearchParams({ ref: 'homepage' });
 		const route: Route = router.findMatchingRoute('/articles/1', queryParams);
 		expect(route.name).toBe('article');
-		if (route.param && route.param.searchParams) {
+
+		if (route.param?.searchParams) {
 			const paramsObject = Object.fromEntries(route.param.searchParams.entries());
 			expect(paramsObject).toEqual({ ref: 'homepage' });
 		} else {
