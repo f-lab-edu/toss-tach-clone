@@ -1,8 +1,9 @@
-import ArticlePage from '@/pages/ArticlePage.js';
-import Home from '@/pages/Home.js';
+import ArticlePage from '@/pages/ArticlePage';
+import Home from '@/pages/Home';
 import NotFound from '@/pages/Notfound';
+import type { Route } from '@/types/RouterTypes';
 
-export const routes = [
+export const routes: Route[] = [
 	{
 		path: '/',
 		name: 'home',
