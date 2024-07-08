@@ -1,20 +1,29 @@
 import '@/assets/scss/Home.scss';
-import Component from '@/core/Component.js';
-import ARTICLE_LIST from '@/mocks/article-list.json';
-import router from '@/router/router.js';
+import { getArticles } from '@/api/index';
+import Component from '@/core/Component';
+import router from '@/router/router';
+import type { Article, ArticleList } from '@/types/ArticleTypes';
 import { formatDate } from '@/utils/dateFormat';
 
 class Home extends Component {
-	constructor($element) {
+	constructor($element: HTMLElement) {
 		super($element);
+		this.init();
 	}
 
-	render() {
-		const articleList = ARTICLE_LIST.articles;
+	async init(): Promise<void> {
+		try {
+			const articleList: ArticleList = await getArticles();
+			this.render(articleList);
+		} catch (error) {
+			this.renderError(error.message);
+		}
+	}
 
-		const listItems = Object.keys(articleList)
+	render(articleList: ArticleList = { articles: {} }): string {
+		const listItems: string = Object.keys(articleList.articles)
 			.map((key) => {
-				const article = articleList[key];
+				const article: Article = articleList.articles[key];
 				return `
 				<li class="list-group-item d-flex mt-3" id=${key}>
 					<div class="contents-container">
@@ -35,7 +44,7 @@ class Home extends Component {
 			})
 			.join('');
 
-		const html = `
+		const html: string = `
 		<div class="container d-flex flex-column">
 			<img src="/assets/images/toss-tech-banner.png" class="mt-5 rounded float-end" alt="toss-tech-banner">
 			<article class="list-item mt-5">
@@ -49,18 +58,26 @@ class Home extends Component {
 		return html;
 	}
 
-	addEventListeners($element) {
+	renderError(errorMessage: string): void {
+		const html: string = `
+		<div class="container d-flex flex-column">
+			<p class="error-message">${errorMessage}</p>
+		</div>`;
+		this.$element.innerHTML = html;
+	}
+
+	addEventListeners($element: HTMLElement): void {
 		if (!$element) return;
 
 		$element.querySelector('.list-group').addEventListener('click', this.onArticleClick);
 	}
 
-	onArticleClick(e) {
-		const listItem = e.target.closest('.list-group-item');
+	onArticleClick(e: MouseEvent): void {
+		const listItem: HTMLElement = (e.target as HTMLElement).closest('.list-group-item');
 		if (listItem) {
-			const articleId = listItem.getAttribute('id');
-			const queryParams = new URLSearchParams({ ref: 'homepage' }).toString();
-			router.navigateTo(`/articles/${articleId}?${queryParams}`);
+			const articleId: string = listItem.getAttribute('id');
+			const queryParams: URLSearchParams = new URLSearchParams({ ref: 'homepage' });
+			router.navigateTo(`/articles/${articleId}`, queryParams);
 		}
 	}
 }
