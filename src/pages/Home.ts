@@ -20,7 +20,8 @@ class Home extends Component {
 		}
 	}
 
-	render(articleList: ArticleList = { articles: {} }): string {
+	render<T>(...args: T[]): string {
+		const articleList = (args[0] as ArticleList) || { articles: {} };
 		const listItems: string = Object.keys(articleList.articles)
 			.map((key) => {
 				const article: Article = articleList.articles[key];

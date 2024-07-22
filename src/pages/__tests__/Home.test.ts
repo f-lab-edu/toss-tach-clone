@@ -25,27 +25,16 @@ describe('Home', () => {
 	test('기사 목록을 렌더링해야 합니다', () => {
 		let articleList: ArticleList;
 
-		const renderError = (errorMessage: string): void => {
-			const html: string = `
-		<div class="container d-flex flex-column">
-			<p class="error-message">${errorMessage}</p>
-		</div>`;
-			$element.innerHTML = html;
-		};
-
 		const init = async (): Promise<void> => {
-			try {
-				articleList = await getArticles();
-				render(articleList);
-			} catch (error) {
-				renderError(error.message);
-			}
+			articleList = await getArticles();
+			render(articleList);
 		};
 		init();
 
 		const render = (articleList: ArticleList = { articles: {} }) => {
 			Object.keys(articleList.articles).forEach((key) => {
 				const article: Article = articleList.articles[key];
+
 				expect($element.innerHTML).toContain(article.title);
 				expect($element.innerHTML).toContain(article.summary);
 				expect($element.innerHTML).toContain(article.thumbnail_image);
