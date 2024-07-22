@@ -6,7 +6,7 @@ interface Article {
 }
 
 interface Articles {
-	[key: string]: Article;
+	[articleById: string]: Article;
 }
 
 interface ArticleList {
@@ -19,7 +19,7 @@ interface ArticleBody {
 
 interface ArticleData {
 	article: Article;
-	body: string;
+	articleContent: string;
 }
 
 export { Article, Articles, ArticleList, ArticleBody, ArticleData };

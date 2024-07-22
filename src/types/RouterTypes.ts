@@ -16,7 +16,7 @@ interface Router {
 	findMatchingRoute(pathname: string, searchParams?: URLSearchParams): Route | null;
 	navigateTo(path: string, searchParams?: URLSearchParams, replace?: boolean): void;
 	route(): void;
-	routes?: Route;
+	routes?: Route[];
 }
 
 export { RouteParam, Route, Router };
