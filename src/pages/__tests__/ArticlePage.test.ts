@@ -17,14 +17,14 @@ describe('ArticlePage', () => {
 	});
 
 	test('기사 내용을 렌더링해야 합니다', async () => {
-		const { body, article } = await getArticle(articleId);
+		const { articleContent, article } = await getArticle(articleId);
 
 		// articlePage가 렌더링 작업을 수행한 후 검사
-		articlePage.render(article, body);
+		articlePage.render(article, articleContent);
 
 		expect($element.innerHTML).toContain(article.title);
 		expect($element.innerHTML).toContain(formatDate(article.created_date));
-		expect($element.querySelector('.article-body').textContent).toContain(body);
+		expect($element.querySelector('.article-body').textContent).toContain(articleContent);
 	});
 
 	test('이미지를 렌더링해야 합니다', async () => {

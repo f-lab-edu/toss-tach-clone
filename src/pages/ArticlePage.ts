@@ -1,3 +1,4 @@
+// ArticlePage.ts
 import '@/assets/scss/ArticlePage.scss';
 import Component from '@/core/Component';
 import { getArticle } from '@/api';
@@ -17,17 +18,12 @@ class ArticlePage extends Component {
 	}
 
 	async init(): Promise<void> {
-		try {
-			const { body, article } = await getArticle(this.articleId);
-			this.render(article, body);
-		} catch (error) {
-			this.renderError(error.message);
-		}
+		const { articleContent, article } = await getArticle(this.articleId);
+		this.render(article, articleContent);
 	}
 
-	render(article: Article, articleBody: string): void {
+	render(article: Article, articleContent: string) {
 		if (!article) {
-			this.renderError('Article not found');
 			return;
 		}
 
@@ -44,14 +40,8 @@ class ArticlePage extends Component {
 						<span>${formatDate(article.created_date)}</span>
 					</div>
 				</header>
-				<div class="mt-5 article-body">${articleBody}</div>
+				<div class="mt-5 article-body">${articleContent}</div>
 			</article>
-		`;
-	}
-
-	renderError(errorMessage: string): void {
-		this.$element.innerHTML = `
-			<div class="error-message">${errorMessage}</div>
 		`;
 	}
 }
