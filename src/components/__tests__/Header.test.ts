@@ -1,16 +1,16 @@
 import { jest } from '@jest/globals';
 
-import Header from '@/components/Header.js';
+import Header from '@/components/Header';
 import router from '@/router/router';
-import { $ } from '@/utils/querySelector.js';
+import { $ } from '@/utils/querySelector';
 
 describe('Header', () => {
-	let header;
-	let originalNavigateTo;
+	let header: Header;
+	let originalNavigateTo: typeof router.navigateTo;
 
 	beforeEach(() => {
 		document.body.innerHTML = '<div class="main-header"></div>';
-		const $element = $('.main-header');
+		const $element: HTMLElement = $('.main-header');
 
 		// router.navigateTo를 모킹합니다.
 		originalNavigateTo = router.navigateTo;
@@ -26,14 +26,14 @@ describe('Header', () => {
 	});
 
 	test('헤더 내용을 렌더링해야 합니다', () => {
-		const $element = $('.main-header');
+		const $element: HTMLElement = $('.main-header');
 		expect($element.innerHTML).toContain('logo-container');
 		expect($element.innerHTML).toContain('right-container');
 	});
 
 	test('로고 클릭 시 navigateTo가 호출되어야 합니다', () => {
-		const $element = $('.main-header');
-		const logoContainer = $element.querySelector('.logo-container');
+		const $element: HTMLElement = $('.main-header');
+		const logoContainer: HTMLElement = $element.querySelector('.logo-container');
 		logoContainer.click();
 
 		expect(router.navigateTo).toHaveBeenCalledWith(`/`);

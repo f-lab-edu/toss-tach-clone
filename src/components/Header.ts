@@ -1,13 +1,13 @@
 import '@/assets/scss/Header.scss';
-import Component from '@/core/Component.js';
+import Component from '@/core/Component';
 import router from '@/router/router';
 class Header extends Component {
-	constructor($element) {
+	constructor($element: HTMLElement) {
 		super($element);
 	}
 
-	render() {
-		const html = `
+	render(): string {
+		const html: string = `
 		<header class="main-header">
 			<div class="header-container">
 				<div class="header-container-inner">
@@ -39,13 +39,13 @@ class Header extends Component {
 		return html;
 	}
 
-	addEventListeners($element) {
+	addEventListeners($element: HTMLElement): void {
 		if (!$element) return;
 
 		$element.querySelector('.logo-container').addEventListener('click', this.onLogoClick);
 	}
 
-	onLogoClick() {
+	onLogoClick(): void {
 		router.navigateTo(`/`);
 	}
 }

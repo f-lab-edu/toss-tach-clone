@@ -2,12 +2,17 @@ module.exports = {
 	root: true,
 	env: {
 		node: true,
-		browser: true, // 브라우저 환경도 추가
+		browser: true,
 		es2021: true,
 		jest: true,
 	},
-	plugins: ['import', 'html'], // html 플러그인 추가
-	extends: ['eslint:recommended', 'plugin:prettier/recommended'],
+	plugins: ['import', 'html', '@typescript-eslint'],
+	extends: [
+		'eslint:recommended',
+		'plugin:@typescript-eslint/recommended',
+		'plugin:prettier/recommended',
+	],
+	parser: '@typescript-eslint/parser', // @typescript-eslint 파서 추가
 	parserOptions: {
 		ecmaVersion: 12,
 		sourceType: 'module',
@@ -24,6 +29,8 @@ module.exports = {
 				// alphabetize: { order: 'asc', caseInsensitive: true },
 			},
 		],
+		'@typescript-eslint/no-unused-vars': ['error'],
+		'@typescript-eslint/no-explicit-any': 'off',
 	},
 	ignorePatterns: ['*.md'], // Markdown 파일을 무시하도록 추가
 };
