@@ -4,7 +4,7 @@ import router from '@/router/router';
 import Home from '@/pages/Home';
 import { $ } from '@/utils/querySelector';
 import type { Article, ArticleList } from '@/types/ArticleTypes';
-import { getArticles } from '@/api';
+import { getArticleById } from '@/api';
 
 describe('Home', () => {
 	document.body.innerHTML = '<div id="content"></div>';
@@ -26,7 +26,7 @@ describe('Home', () => {
 		let articleList: ArticleList;
 
 		const init = async (): Promise<void> => {
-			articleList = await getArticles();
+			articleList = await getArticleById();
 			render(articleList);
 		};
 		init();
