@@ -28,15 +28,22 @@ const testRoutes: TestRoute[] = [
 	},
 ];
 
-const routeList: Route[] = testRoutes.map((route) => ({
-	path: route.path,
-	name: route.name,
-	element: route.element as unknown as new (
-		$container: HTMLElement,
-		params?: RouteParam,
-	) => Component,
-	param: route.param,
-}));
+function isComponentClass(
+	element: unknown,
+): element is new ($container: HTMLElement, params?: RouteParam) => Component {
+	return typeof element === 'function';
+}
+
+const routeList: Route[] = testRoutes.map((route) => {
+	if (isComponentClass(route.element)) {
+		return {
+			path: route.path,
+			name: route.name,
+			element: route.element,
+			param: route.param,
+		};
+	}
+});
 
 describe('Router', () => {
 	const testRouter = router as Router;
