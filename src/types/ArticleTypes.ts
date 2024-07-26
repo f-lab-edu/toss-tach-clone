@@ -5,16 +5,12 @@ interface Article {
 	created_date: string;
 }
 
-interface Articles {
+interface ArticleById {
 	[articleById: string]: Article;
 }
 
 interface ArticleList {
-	articles: Articles;
-}
-
-interface ArticleBody {
-	[key: string]: string;
+	articles: ArticleById;
 }
 
 interface ArticleData {
@@ -22,4 +18,4 @@ interface ArticleData {
 	articleContent: string;
 }
 
-export { Article, Articles, ArticleList, ArticleBody, ArticleData };
+export { Article, ArticleById, ArticleList, ArticleData };
