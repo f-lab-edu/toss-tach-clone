@@ -1,6 +1,9 @@
 import Component from '@/core/Component';
 
-class NotFoundPage extends Component {
+interface NotFoundPageProps {}
+interface NotFoundPageState {}
+
+class NotFoundPage extends Component<NotFoundPageProps, NotFoundPageState> {
 	constructor($element: HTMLElement) {
 		super($element);
 	}
