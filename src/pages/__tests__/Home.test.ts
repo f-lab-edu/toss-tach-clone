@@ -9,7 +9,8 @@ import { getArticleById } from '@/api';
 describe('Home', () => {
 	document.body.innerHTML = '<div id="content"></div>';
 	const $element: HTMLElement = $('#content');
-	const home: Home = new Home($element);
+	const props = {};
+	const home: Home = new Home($element, props);
 	let originalNavigateTo;
 
 	beforeEach(() => {
