@@ -4,7 +4,7 @@ import ARTICLE from '@/mocks/article-body.json';
 
 // async function interceptor(url: string, param?: string): Promise<T> {}
 
-async function getArticles(): Promise<ArticleList> {
+async function getArticleById(): Promise<ArticleList> {
 	try {
 		const data = ARTICLE_LIST;
 		return data;
@@ -26,4 +26,4 @@ async function getArticle(articleId: string): Promise<ArticleData> {
 	}
 }
 
-export { getArticles, getArticle };
+export { getArticleById, getArticle };
