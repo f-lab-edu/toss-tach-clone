@@ -5,18 +5,21 @@ interface RouteParam {
 	searchParams?: URLSearchParams;
 }
 
-interface Route {
+interface Route<P, S> {
 	path: string;
 	name: string;
-	element: new ($container: HTMLElement, params?: RouteParam) => Component;
+	element: new ($container: HTMLElement, params?: RouteParam) => Component<P, S>;
 	param?: RouteParam;
 }
 
 interface Router {
-	findMatchingRoute(pathname: string, searchParams?: URLSearchParams): Route | null;
+	findMatchingRoute(
+		pathname: string,
+		searchParams?: URLSearchParams,
+	): Route<unknown, unknown> | null;
 	navigateTo(path: string, searchParams?: URLSearchParams, replace?: boolean): void;
 	route(): void;
-	routes?: Route[];
+	routes?: Route<unknown, unknown>[];
 }
 
 export { RouteParam, Route, Router };
