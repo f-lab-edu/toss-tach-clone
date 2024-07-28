@@ -1,27 +1,46 @@
 import '@/assets/scss/Home.scss';
-import { getArticles } from '@/api/index';
+import { getArticleById } from '@/api/index';
 import Component from '@/core/Component';
 import router from '@/router/router';
 import type { Article, ArticleList } from '@/types/ArticleTypes';
 import { formatDate } from '@/utils/dateFormat';
 
-class Home extends Component {
-	constructor($element: HTMLElement) {
-		super($element);
+interface HomeProps {}
+
+interface HomeState {
+	articleList: ArticleList;
+	errorMessage?: string;
+}
+
+class Home extends Component<HomeProps, HomeState> {
+	constructor($element: HTMLElement, props: HomeProps) {
+		super($element, props);
 		this.init();
+	}
+
+	protected initState(): HomeState {
+		return {
+			articleList: { articles: {} },
+		};
 	}
 
 	async init(): Promise<void> {
 		try {
-			const articleList: ArticleList = await getArticles();
-			this.render(articleList);
+			const articleList: ArticleList = await getArticleById();
+			this.setState({ articleList });
 		} catch (error) {
-			this.renderError(error.message);
+			this.setState({ errorMessage: error.message });
 		}
 	}
 
-	render<T>(...args: T[]): string {
-		const articleList = (args[0] as ArticleList) || { articles: {} };
+	render(): void {
+		const { articleList, errorMessage } = this.state;
+
+		if (errorMessage) {
+			this.renderError(errorMessage);
+			return;
+		}
+
 		const listItems: string = Object.keys(articleList.articles)
 			.map((key) => {
 				const article: Article = articleList.articles[key];
@@ -56,7 +75,6 @@ class Home extends Component {
 		</div>`;
 		this.$element.innerHTML = html;
 		this.addEventListeners(this.$element);
-		return html;
 	}
 
 	renderError(errorMessage: string): void {
@@ -70,7 +88,7 @@ class Home extends Component {
 	addEventListeners($element: HTMLElement): void {
 		if (!$element) return;
 
-		$element.querySelector('.list-group').addEventListener('click', this.onArticleClick);
+		$element.querySelector('.list-group').addEventListener('click', this.onArticleClick.bind(this));
 	}
 
 	onArticleClick(e: MouseEvent): void {

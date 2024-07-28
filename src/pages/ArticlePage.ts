@@ -1,29 +1,48 @@
-// ArticlePage.ts
 import '@/assets/scss/ArticlePage.scss';
 import Component from '@/core/Component';
 import { getArticle } from '@/api';
-import type { Article } from '@/types/ArticleTypes';
+import type { Article, ArticleData } from '@/types/ArticleTypes';
 import type { RouteParam } from '@/types/RouterTypes';
 import { formatDate } from '@/utils/dateFormat';
 
-class ArticlePage extends Component {
+interface ArticlePageProps extends RouteParam {}
+
+interface ArticlePageState {
+	article?: Article;
+	articleContent?: string;
+	errorMessage?: string;
+}
+
+class ArticlePage extends Component<ArticlePageProps, ArticlePageState> {
 	articleId: string;
 	searchParams: URLSearchParams;
 
-	constructor($element: HTMLElement, params: RouteParam) {
-		super($element);
-		this.articleId = params.id;
-		this.searchParams = params?.searchParams;
+	constructor($element: HTMLElement, props: ArticlePageProps) {
+		super($element, props);
+		this.articleId = props.id;
+		this.searchParams = props.searchParams;
 		this.init();
 	}
 
 	async init(): Promise<void> {
-		const { articleContent, article } = await getArticle(this.articleId);
-		this.render(article, articleContent);
+		try {
+			const { article, articleContent }: ArticleData = await getArticle(this.articleId);
+			this.setState({ article, articleContent });
+		} catch (error) {
+			this.setState({ errorMessage: error.message });
+		}
 	}
 
-	render(article: Article, articleContent: string) {
-		if (!article) {
+	render(): void {
+		const { article, articleContent, errorMessage } = this.state;
+
+		if (errorMessage) {
+			this.renderError(errorMessage);
+			return;
+		}
+
+		if (!article || !articleContent) {
+			this.$element.innerHTML = '<p>Loading...</p>';
 			return;
 		}
 
@@ -43,6 +62,13 @@ class ArticlePage extends Component {
 				<div class="mt-5 article-body">${articleContent}</div>
 			</article>
 		`;
+	}
+
+	renderError(errorMessage: string): void {
+		this.$element.innerHTML = `
+		<div class="container d-flex flex-column">
+			<p class="error-message">${errorMessage}</p>
+		</div>`;
 	}
 }
 

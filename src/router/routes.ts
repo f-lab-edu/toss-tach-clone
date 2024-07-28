@@ -3,7 +3,7 @@ import Home from '@/pages/Home';
 import NotFound from '@/pages/Notfound';
 import type { Route } from '@/types/RouterTypes';
 
-export const routes: Route[] = [
+export const routes: Route<unknown, unknown>[] = [
 	{
 		path: '/',
 		name: 'home',

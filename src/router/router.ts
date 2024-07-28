@@ -2,10 +2,16 @@ import { routes } from './routes';
 
 import type { Route, Router } from '@/types/RouterTypes';
 import { $ } from '@/utils/querySelector';
+import Component from '@/core/Component';
 
 const router: Router = {
-	findMatchingRoute(pathname: string, searchParams?: URLSearchParams): Route | null {
-		let route = routes.find((route) => {
+	routes,
+
+	findMatchingRoute(
+		pathname: string,
+		searchParams?: URLSearchParams,
+	): Route<unknown, unknown> | null {
+		let route = this.routes.find((route) => {
 			const routeParts: string[] = route.path.split('/');
 			const pathParts: string[] = pathname.split('/');
 
@@ -30,7 +36,7 @@ const router: Router = {
 			route = routes.find((route) => route.name === 'notfound');
 		}
 
-		return route;
+		return route || null;
 	},
 
 	navigateTo(path: string, searchParams?: URLSearchParams, replace: boolean = false): void {
@@ -43,7 +49,7 @@ const router: Router = {
 		const url: URL = new URL(window.location.href);
 		const pathname: string = url.pathname;
 		const searchParams: URLSearchParams = new URLSearchParams(url.search);
-		const route: Route | null = this.findMatchingRoute(pathname, searchParams);
+		const route: Route<unknown, unknown> | null = this.findMatchingRoute(pathname, searchParams);
 
 		if (!route || (route.name === 'notfound' && pathname !== '/notfound')) {
 			this.navigateTo('/notfound');
@@ -51,12 +57,12 @@ const router: Router = {
 		}
 
 		const { element: PageElement, param, name } = route;
-		let pageInstance;
+		let pageInstance: Component<unknown, unknown>;
 
 		if (name === 'notfound') {
 			pageInstance = new PageElement($('#app'));
 		} else {
-			pageInstance = new PageElement($('#content'), param);
+			pageInstance = new PageElement($('#content'), param || {});
 		}
 
 		pageInstance.render();

@@ -4,12 +4,13 @@ import router from '@/router/router';
 import Home from '@/pages/Home';
 import { $ } from '@/utils/querySelector';
 import type { Article, ArticleList } from '@/types/ArticleTypes';
-import { getArticles } from '@/api';
+import { getArticleById } from '@/api';
 
 describe('Home', () => {
 	document.body.innerHTML = '<div id="content"></div>';
 	const $element: HTMLElement = $('#content');
-	const home: Home = new Home($element);
+	const props = {};
+	const home: Home = new Home($element, props);
 	let originalNavigateTo;
 
 	beforeEach(() => {
@@ -26,7 +27,7 @@ describe('Home', () => {
 		let articleList: ArticleList;
 
 		const init = async (): Promise<void> => {
-			articleList = await getArticles();
+			articleList = await getArticleById();
 			render(articleList);
 		};
 		init();

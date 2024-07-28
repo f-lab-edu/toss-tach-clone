@@ -19,8 +19,8 @@ describe('ArticlePage', () => {
 	test('기사 내용을 렌더링해야 합니다', async () => {
 		const { articleContent, article } = await getArticle(articleId);
 
-		// articlePage가 렌더링 작업을 수행한 후 검사
-		articlePage.render(article, articleContent);
+		// articlePage의 init 메서드 호출하여 상태 업데이트 및 렌더링
+		await articlePage.init();
 
 		expect($element.innerHTML).toContain(article.title);
 		expect($element.innerHTML).toContain(formatDate(article.created_date));
@@ -30,8 +30,8 @@ describe('ArticlePage', () => {
 	test('이미지를 렌더링해야 합니다', async () => {
 		const { article } = await getArticle(articleId);
 
-		// articlePage가 렌더링 작업을 수행한 후 검사
-		articlePage.render(article, '');
+		// articlePage의 init 메서드 호출하여 상태 업데이트 및 렌더링
+		await articlePage.init();
 
 		const img: HTMLImageElement = $element.querySelector('img');
 		expect(img.src).toContain(article.thumbnail_image);
